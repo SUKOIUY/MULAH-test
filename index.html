@@ -74,7 +74,7 @@
                 
                 rows.forEach(row => {
                     const cells = row.split(',');
-                    const index = cells[0].trim(); // Get the index (e.g., A1, A2, ...)
+                    const index = cells[0];
                     const value = parseInt(cells[1]); // Parse value as integer
                     
                     const newRow = document.createElement('tr');
@@ -87,16 +87,9 @@
                 });
 
                 // Calculate values for Table 2
-                const alphaIndex1 = 'A5';
-                const alphaIndex2 = 'A20';
-                const betaIndex1 = 'A15';
-                const betaIndex2 = 'A7';
-                const charlieIndex1 = 'A13';
-                const charlieIndex2 = 'A12';
-
-                const alphaValue = getValueByIndex(rows, alphaIndex1) + getValueByIndex(rows, alphaIndex2);
-                const betaValue = getValueByIndex(rows, betaIndex1) / getValueByIndex(rows, betaIndex2);
-                const charlieValue = getValueByIndex(rows, charlieIndex1) * getValueByIndex(rows, charlieIndex2);
+                const alphaValue = parseInt(rows[5].split(',')[1]) + parseInt(rows[20].split(',')[1]); // A5 + A20
+                const betaValue = parseInt(rows[15].split(',')[1]) / parseInt(rows[7].split(',')[1]); // A15 / A7
+                const charlieValue = parseInt(rows[13].split(',')[1]) * parseInt(rows[12].split(',')[1]); // A13 * A12
                 
                 // Update Table 2 with computed values
                 document.getElementById('alphaValue').textContent = alphaValue;
@@ -106,28 +99,6 @@
             .catch(error => {
                 console.error('Error fetching the CSV file:', error);
             });
-    }
-    
-    // Function to get value from rows array based on index
-    function getValueByIndex(rows, index) {
-        const rowIndex = findRowIndex(rows, index);
-        if (rowIndex !== -1) {
-            const value = parseInt(rows[rowIndex].split(',')[1]);
-            return value;
-        }
-        return NaN; // Return NaN if index not found (handle error case)
-    }
-    
-    // Function to find the row index based on index (e.g., A5)
-    function findRowIndex(rows, index) {
-        for (let i = 0; i < rows.length; i++) {
-            const cells = rows[i].split(',');
-            const cellIndex = cells[0].trim();
-            if (cellIndex === index) {
-                return i;
-            }
-        }
-        return -1; // Return -1 if index not found (handle error case)
     }
     
     // Call the function to load CSV data into Table 1
