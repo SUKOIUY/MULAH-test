@@ -94,9 +94,9 @@
                 const charlieIndex1 = 'A13';
                 const charlieIndex2 = 'A12';
 
-                const alphaValue = (getValueByIndex(rows, alphaIndex1)) + (getValueByIndex(rows, alphaIndex2));
-                const betaValue = (getValueByIndex(rows, betaIndex1)) / (getValueByIndex(rows, betaIndex2));
-                const charlieValue = (getValueByIndex(rows, charlieIndex1)) * (getValueByIndex(rows, charlieIndex2));
+                const alphaValue = getValueByIndex(rows, alphaIndex1) + getValueByIndex(rows, alphaIndex2);
+                const betaValue = getValueByIndex(rows, betaIndex1) / getValueByIndex(rows, betaIndex2);
+                const charlieValue = getValueByIndex(rows, charlieIndex1) * getValueByIndex(rows, charlieIndex2);
                 
                 // Update Table 2 with computed values
                 document.getElementById('alphaValue').textContent = alphaValue;
