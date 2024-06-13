@@ -87,13 +87,16 @@
                 });
 
                 // Calculate values for Table 2
-                const alphaIndex = 'A5';
-                const betaIndex = 'A15';
-                const charlieIndex = 'A13';
+                const alphaIndex1 = 'A5';
+                const alphaIndex2 = 'A20';
+                const betaIndex1 = 'A15';
+                const betaIndex2 = 'A7';
+                const charlieIndex1 = 'A13';
+                const charlieIndex2 = 'A12';
 
-                const alphaValue = getValueByIndex(rows, alphaIndex);
-                const betaValue = getValueByIndex(rows, betaIndex);
-                const charlieValue = getValueByIndex(rows, charlieIndex);
+                const alphaValue = getValueByIndex(rows, alphaIndex1) + getValueByIndex(rows, alphaIndex2);
+                const betaValue = getValueByIndex(rows, betaIndex1) / getValueByIndex(rows, betaIndex2);
+                const charlieValue = getValueByIndex(rows, charlieIndex1) * getValueByIndex(rows, charlieIndex2);
                 
                 // Update Table 2 with computed values
                 document.getElementById('alphaValue').textContent = alphaValue;
